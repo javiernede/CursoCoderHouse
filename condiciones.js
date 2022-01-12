@@ -15,6 +15,7 @@ if (5 == 6) { /* igualdad */
 
 if ("6" == 6) { /* compara con dos signos si entra.*/
     console.log("Hola a todos 1");
+    hola
 }
 
 
