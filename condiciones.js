@@ -20,4 +20,5 @@ if("6"==6){ /* compara con dos signos si entra.*/
 
 if("6"=== 6){ /* compara con tres signos NO entra.*/
     console.log("Hola a todos 1");
+    
 }
