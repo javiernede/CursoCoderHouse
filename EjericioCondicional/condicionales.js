@@ -12,3 +12,4 @@ if (valor1 > valor2 ) {
 }else{
     alert("El número ingresado:  " + valor1 + " es menor al número ingresado: " + valor2 );
 }
+
