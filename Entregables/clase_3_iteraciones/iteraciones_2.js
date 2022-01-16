@@ -20,7 +20,7 @@ const sGeminis = "En la astrología occidental, basada en las doce divisiones en
 /*Cuerpo del programa*/
 let texto = prompt("Ingrese el signo del zodiaco por favor (ESC sale del programa): ");
 
-do  {
+while (texto.toLowerCase() != "esc")  {
 
     switch (texto.toLowerCase() ) {
         case "aries":
@@ -65,4 +65,4 @@ do  {
             texto = prompt("Ingrese el signo del zodiaco por favor (ESC sale del programa): ");
         }
     
-}while (texto.toLowerCase() != "esc");
+}
