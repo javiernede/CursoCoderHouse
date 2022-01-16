@@ -3,5 +3,5 @@ let valor5 = parseInt(prompt("Ingrese una numero por favor. Muestro valor si est
 
 if (valor5 >= 10 && valor5 <= 50 )
 {
-    alert("El numero")
+    alert("El numero" + valor5);
 }
