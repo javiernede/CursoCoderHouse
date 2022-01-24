@@ -43,7 +43,7 @@ while (texto.toLowerCase() != "esc")  {
 
     switch (parseInt(texto)) {
 
-    case 1: /*Serivcio de control de matafuegos*/
+    case 1: /*Serivcio de control de matafuegosS*/
 
         nPrecioTotalServicio = calcularPrecioPorServicio(precioServicioMataFuego, descuento);  
 
