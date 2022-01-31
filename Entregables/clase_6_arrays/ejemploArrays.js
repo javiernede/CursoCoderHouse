@@ -9,3 +9,6 @@ while(listaNombres.length < cantidad) {
     console.log("Tamaño: " + listaNombres.length)
 
 }
+
+
+alert(listaNombres.join("\n"))
