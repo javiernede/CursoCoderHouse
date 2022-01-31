@@ -71,7 +71,11 @@ while (texto.toLowerCase() != "esc")  {
 
 
         carrito.resumen()
-        
+
+
+        let nSubtotal = carrito.subtotal();
+
+        alert(`El subtotal es ${nSubtotal}`)
     }
 
 
