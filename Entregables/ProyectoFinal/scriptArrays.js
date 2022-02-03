@@ -1,95 +1,148 @@
-/*Declaraciones de const*/
+
+const op1 = " 1 - Comprar Servicios"
+const op2 = " 2 - Eliminar Servicios"
+const op3 = " 3  - Servicio de equipamiento de personal."
+
+
 const sServicio1 = " 1 - Servicio de control de matafuegos."
 const sServicio2 = " 2 - Servicio de control de compresores."
 const sServicio3 = " 3  - Servicio de equipamiento de personal."
 
-const descuento = 20
-const precioServicioMataFuego = 2500
-const precioCompresores = 1300
-const precioEquipSegu = 500
+
+let id = 0
+let quantity = 0
+let servicioMensaje = 0
+
+const cart = []
 
 
-/*Declaraciones de variables*/
+menu = prompt("Ingrese por favor que operacion quiere realizar: \n " + 
+op1 + "\n" + op2);
 
 
-let iNoMuestro = 0;
-let totalComprado = 0;
+let respueta = 0;
 
-/*Cuerpo del programa*/
+respueta = parseInt(menu)
+if (respueta == 1) {
+
+    servicioMensaje = prompt("Ingrese por favor el número de servicio que desee contratar (0 sale del programa): \n " + 
+                      sServicio1 + "\n" + sServicio2 + "\n" + sServicio3);
+}
+
+
+id = parseInt(servicioMensaje)          
+
+quantity = parseInt(prompt("Ingrese la cantidad del servicio " + servicioMensaje));
 
 
 
-const servicios = []
+
+while (id != 0 && respueta !=0 )  {
+
+   
+   if (respueta == 1){ 
+       
+     
+
+         const addServicio = (id, quantity = 1) => {     /*busca en el array x id*/ 
 
 
-let carrito = new Carrito();
-
-let servicio1 = new ServicioSeg(sServicio1, 12000, 1)
-let servicio2 = new ServicioSeg(sServicio2, 15000, 1)
-let servicio3 = new ServicioSeg(sServicio3, 18000, 1)
-
-let texto = prompt("Ingrese por favor el número de servicio que desee contratar (ESC sale del programa): \n " + 
-                    sServicio1 + "\n" + sServicio2 + "\n" + sServicio3);
-
-while (texto.toLowerCase() != "esc")  {
-
-    switch (parseInt(texto)) {
-
-    case 1: /*Serivcio de control de matafuegosS*/
-
-      servicios.push(servicio1);
-
-      carrito.addServicio(servicio1)
+        const servicio = servicios.find( p=> p.id == id)
+    
+        /* Si el id ingresado no existe */
+    
+        if(!servicio) return "El servicio no existe"
+    
+        if (servicio.stock <= quantity) return "No puede contratar mas servicios"
+    
+        /* Busco si el Servicio ingresado existe en el carrito*/
+    
+        const servicioCart = cart.find( p => p.id == id)
+    
+        /*Si existe, entonces lo sumo al existente*/ 
+    
+        if(servicioCart) servicioCart.quantity += quantity
+    
+        /*Sino existe entonces lo agrego al carrito*/ 
+    
+        else cart.push(new ServicioToCart(servicio, quantity))
+    
+        servicio.stock -= quantity
       
-       break;
+        alert(cart.join('\n'))
+     
+    }
 
+   addServicio(id,quantity)
 
-    case 2: /*Servicio de control de compresores*/
-        
-       servicios.push(servicio2);
+    
 
-       carrito.addServicio(servicio2)
+}
+    
+     precioTotal = () => {
 
-        break;
-
-    case 3: /*Servicio de control de equipamiento de personal.*/
-         
-        servicios.push(servicio3);    
-
-        carrito.addServicio(servicio3);
-
-        break;
-
-    default: /*No eligio un servicio valido.*/
-
-        alert("Lo lamentamos, no ingreso un servicio válido ");
-
-        iNoMuestro = 1;
-
-        break;
-      
+    
+        const suma = cart.reduce((suma,p) => suma + p.price,0)
+    
+        alert(`Precio Total: ${suma}`)
+    }
+    
+    
+    
+     rmServicios = (id, qty = 1) => {
+    
+        const service = cart.find(p => p.id == id)
+    
+        service.quantity -= qty
+    
+        if(service.quantity < 1) {
+    
+            //Obtengo el index en el carrito
+    
+            const idx = cart.indexOf(p => p.id == id)
+    
+            //Borro por indice obtenido en la sentencia anterior.
+            cart.splice(idx-1, 1)
+    
+    
+        }
+    }
+    
+     addCupon = (cupon) => {
+    
+        cuponFound = cupones.find( c=> c.name == cupon && !c.apply)
+    
+        if(!cuponFound) return "Cupon not found"
+    
+        cuponFound.apply = true
+    
+        cart.forEach((p) => {
+            p.price = p.price * 0.05
+        })
     }
 
 
+     menu = prompt("Ingrese por favor que operacion quiere realizar: \n " + 
+    op1 + "\n" + op2);
 
-    let pregunta = prompt("¿Hay algún servicio mas que quiera consultar? S / N: ");
+    respueta = parseInt(menu)
 
-    /*while (pregunta == "s"  ) 
-    {
-        alert("No ingreso una respuesta correcta")   
+    if (respueta == 1) {
 
-         pregunta = prompt("¿Hay algún servicio mas que quiera consultar? S / N: ");
-    }*/
-    if (pregunta.toLowerCase() == "n"){
-        break;
+    servicioMensaje = prompt("Ingrese por favor el número de servicio que desee contratar (0 sale del programa): \n " + 
+                      sServicio1 + "\n" + sServicio2 + "\n" + sServicio3);
+
+    id = parseInt(servicioMensaje)          
+
+    quantity = parseInt(prompt("Ingrese la cantidad de del servicio " + servicioMensaje));
+
     }
-  
 
-    texto = prompt("Ingrese por favor el número de servicio que desee contratar (ESC sale del programa): \n " + 
-    sServicio1 + "\n" + sServicio2 + "\n" + sServicio3);
 }
 
-/*Muesto lo que se registro por el arrays*/ 
-for (const servicio of servicios){
-    console.log(servicio)
-}
+
+
+
+
+
+

@@ -81,7 +81,7 @@ while (texto.toLowerCase() != "esc")  {
 
    /* iNoMuestro = 0;*/
 
-    let pregunta = prompt("¿Hay algún servicio mas que quiera consultar? S / N: ");
+    let pregunta = prompt("¿Hay algún servicio mas que quiera contratar? S / N: ");
 
     /*while (pregunta == "s"  ) 
     {
