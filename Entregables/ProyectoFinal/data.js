@@ -1,3 +1,4 @@
+const cart = []
 const servicios = [
     { id: 1, name: 'Servicio de control de matafuegos.', price: 50000,  stock: 8},
     { id: 2, name: 'Servicio de control de compresores', price: 80000,  stock: 8},

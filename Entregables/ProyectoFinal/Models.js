@@ -8,11 +8,19 @@ class ServicioToCart {
 
         this.price = obj.price
 
-        this.quantity = qty
+        this.quantity = 1
+
+        this.total = this.unit_price
+        
 
     }
 
+     add() {
 
+         this.quantity++
+         
+         this.total += this.unit_price
+     }
 
     
 
