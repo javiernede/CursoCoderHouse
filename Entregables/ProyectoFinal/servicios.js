@@ -50,18 +50,29 @@ const registerClickEvent = ()=> {
    }
 }
 
-const getPrice = (id)=> {
+const SetPrice = (id)=> {
+        const precios =  document.getElementById("5") /*Esto es un array */
         let htmlListServicios = ""
-        const servicio = servicios.find( p=> p.id == id)
-        htmlListServicios = ` <b>${servicio.price}</b>`
-   }
+        const serv = servicios.find( p=> p.id == id)
+            htmlListServicios = 
+           ` 
+           <div>
+           <p>     
+           <b> Precio: ${serv.price}</b>
+           </p>  
+            </div> `
+            precios.innerHTML = htmlListServicios
+
+}
+
 
 const showServicios = () => {
 
     registerClickEvent()
 
-    const precios =  document.getElementById("1") /*Esto es un array */
-    getPrice(precios)
+   
+
+    SetPrice(5)
     
 }
 

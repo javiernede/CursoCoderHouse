@@ -95,6 +95,13 @@ font-weight: hold;
     margin-bottom:10px;
 }
 
+#showcase h3{
+    margin-top:100px;
+    font-size:55px;
+    margin-bottom:10px;
+    margin-left: 20px;
+}
+
 #showcase p{
     font-size:20px;
 }
