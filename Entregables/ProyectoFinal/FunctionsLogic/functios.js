@@ -43,37 +43,50 @@ const showServiciosOnCart = () => {
 
 }
 
-const registerClickEvent = ()=> {
-    const btnAddCarts = document.getElementsByClassName("AddCart") /*Esto es un array */
-    for(const btn of btnAddCarts){ /*Recorro el array*/ 
-       btn.onclick = addCart
-   }
-}
+
 
 const SetPrice = (id)=> {
-        const precios =  document.getElementById("5") /*Esto es un array */
+        const precios =  document.getElementsByClassName("precios") /*Esto es un array */
         let htmlListServicios = ""
         const serv = servicios.find( p=> p.id == id)
             htmlListServicios = 
            ` 
            <div>
-           <p>     
-           <b> Precio: ${serv.price}</b>
-           </p>  
+                <p>     
+                <b> Precio: ${serv.price}</b>
+                </p>  
             </div> `
             precios.innerHTML = htmlListServicios
 
 }
 
 
-const showServicios = () => {
+const ShowService = ()=> {
+  
+    const divServicios = document.getElementById("servicios")
+    let htmlListServicios = ""
 
-    registerClickEvent()
+    servicios.forEach(serv => {
 
-   
-
-    SetPrice(5)
+        htmlListServicios += 
+        `
+        <li id="controlEquipPersonal" style= "border: 3px solid #e8491d">
+        <div>
+            <p>     
+             ${serv.desc}
+            </p>  
+            <p>     
+            <b> Precio: ${serv.price}</b>
+            </p> 
+            <button class ="AddCart" id="${serv.id}"> Agregar al carrito: 🛒 </button> 
+        </div> 
+        </li>`
+        
+    })
     
+    
+    divServicios.innerHTML = htmlListServicios
+
 }
 
 const addCart = (event) =>  {
@@ -85,7 +98,19 @@ const addCart = (event) =>  {
     showServiciosOnCart()
 }
 
-showServicios()
+const showServicios = () => {
 
+    ShowService()
 
+    registerClickEvent()
 
+  
+    
+}
+
+const registerClickEvent = ()=> {
+    const btnAddCarts = document.getElementsByClassName("AddCart") /*Esto es un array */
+    for(const btn of btnAddCarts){ /*Recorro el array*/ 
+       btn.onclick = addCart
+   }
+}
